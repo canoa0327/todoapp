@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <title>안녕하세요</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Todo App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/write">Write</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/list">list</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container input-group mb-2">
+    <input type="text" class="form-control" id="search-input" value="<%= value %>">
+    <button class="input-group-append btn btn-danger" id="search">검색</button>
+  </div>
+  <ul class="list-group">
+    <% for (var i = 0; i < search.length; i ++){ %>
+    <li class="list-group-item">
+      <h6>제목 : <%= search[i].name %></h6>
+      <p>언제까지 : <%= search[i].age %></p>
+      <button class="btn btn-warning" onclick="location.href='/detail/<%= search[i]._id %>'">상세</button>
+    </li>
+    <% } %>
+  </ul>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  
+  <script>
+
+  $('#search').click(function() {
+    let keyword = $('#search-input').val();
+    window.location.replace('/search?value=' + keyword);
+  });
+  </script>
+
+</body>
+
+
+
+</html>
